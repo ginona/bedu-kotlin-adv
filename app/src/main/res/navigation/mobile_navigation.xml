@@ -23,5 +23,13 @@
         android:id="@+id/shop_dest"
         android:name="com.gino.projectbedu.ShopFragment"
         android:label="fragment_shop"
-        tools:layout="@layout/fragment_shop" />
+        tools:layout="@layout/fragment_shop" >
+        <action
+            android:id="@+id/detail_dest"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.gino.projectbedu.DetailFragment"
+        android:label="DetailFragment" />
 </navigation>
