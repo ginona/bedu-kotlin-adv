@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">ProjectBedu</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login_title">Bedu Shop</string>
+    <string name="mail_placeholder">Correo electrónico</string>
+    <string name="name_placeholder">Nombre completo</string>
+    <string name="phone_placeholder">Teléfono</string>
+    <string name="pw_placeholder">Contraseña</string>
+    <string name="sesion">Iniciar Sesión</string>
+    <string name="register_here">Regístrate aquí</string>
+    <string name="register">Regístrate</string>
+    <string name="register_now">Registrarme</string>
+</resources>
