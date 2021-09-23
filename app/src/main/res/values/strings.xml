@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">ProjectBedu</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="login_title">Bedu Shop</string>
+    <string name="product_title">Product Title</string>
     <string name="mail_placeholder">Correo electrónico</string>
     <string name="name_placeholder">Nombre completo</string>
     <string name="phone_placeholder">Teléfono</string>
@@ -11,4 +11,10 @@
     <string name="register_here">Regístrate aquí</string>
     <string name="register">Regístrate</string>
     <string name="register_now">Registrarme</string>
+    <string name="add_to_cart">Agregar al carrito</string>
+    <string name="new_title">Nuevo</string>
+    <string name="description_title">Descripción</string>
+    <string name="available">Disponible en tu domicilio</string>
+    <string name="ship">Entrega mañana</string>
+    <string name="price">$1000</string>
 </resources>
