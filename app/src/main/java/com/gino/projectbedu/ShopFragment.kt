@@ -1,23 +1,15 @@
 package com.gino.projectbedu
 
-import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.Toast
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
-import androidx.fragment.app.ListFragment
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.gms.tasks.Tasks
 import org.bedu.listdetailfragment.Product
 import org.bedu.listdetailfragment.RecyclerAdapter
-import java.io.IOException
 
 /**
  * A simple [Fragment] subclass.
@@ -50,17 +42,14 @@ class ShopFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        /*Look here*/
-        recyclerProducts.setOnClickListener{
-            Toast.makeText(
-                requireActivity(),
-                "${view.findViewById<EditText>(R.id.tvDescription)}", Toast.LENGTH_SHORT
-            ).show()
+        setListener {
+            val intent = Intent(requireActivity(), DetailActivity::class.java)
+            intent.putExtra(DetailActivity.PRODUCT,it)
+            startActivity(intent)
         }
     }
 
     private fun setUpRecyclerView(){
-
         recyclerProducts.setHasFixedSize(true)
         recyclerProducts.layoutManager = LinearLayoutManager(activity)
         mAdapter = RecyclerAdapter( requireActivity(), getProducts(), listener)
