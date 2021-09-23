@@ -1,5 +1,6 @@
 package com.gino.projectbedu
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,8 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import org.bedu.listdetailfragment.Product
 import org.bedu.listdetailfragment.RecyclerAdapter
+import java.io.IOException
 
 /**
  * A simple [Fragment] subclass.
@@ -67,7 +71,7 @@ class ShopFragment : Fragment() {
         return products
     }
 
-    /*private fun getJsonDataFromAsset(context: Context, fileName: String = "products.json"): String? {
+    private fun getJsonDataFromAsset(context: Context, fileName: String = "products.json"): String? {
         val jsonString: String
         try {
             jsonString = context.assets.open(fileName).bufferedReader().use { it.readText() }
@@ -82,5 +86,5 @@ class ShopFragment : Fragment() {
         val jsonString = getJsonDataFromAsset(context)
         val listProductType = object : TypeToken<List<Product>>() {}.type
         return Gson().fromJson(jsonString, listProductType)
-    }*/
+    }
 }
