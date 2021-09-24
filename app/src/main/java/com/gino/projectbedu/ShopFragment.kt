@@ -54,19 +54,17 @@ class ShopFragment : Fragment() {
     }
 
     private fun setUpRecyclerView(){
+        val testing = getProducts(requireContext())
         recyclerProducts.setHasFixedSize(true)
         recyclerProducts.layoutManager = LinearLayoutManager(activity)
-        mAdapter = RecyclerAdapter( requireActivity(), getProducts(), listener)
+        mAdapter = RecyclerAdapter( requireActivity(), testing, listener)
         recyclerProducts.adapter = mAdapter
     }
 
     private fun getProducts(): MutableList<Product>{
         var products:MutableList<Product> = ArrayList()
 
-        products.add(Product("Control ps5", "Disponible el 20 de noviembre", "$1400",4.6f,R.drawable.control))
-        products.add(Product("Intel core i9", "10ma Generación", "$9800",4.4f,R.drawable.corei9))
-        products.add(Product("Lector Kobo", "Disponible Prime", "$2235",3.8f,R.drawable.kobo))
-        products.add(Product("Audífonos Sony xm3", "Noise Cancelling", "$6449",4.8f,R.drawable.xm3))
+        products.add(Product(1,"Control ps5", 4.7f, "$1400", "Disponible el 20 de noviembre", "electronics", "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg"))
 
         return products
     }
@@ -82,7 +80,7 @@ class ShopFragment : Fragment() {
         return jsonString
     }
 
-    fun getProducts(context: Context): List<Product> {
+    fun getProducts(context: Context): MutableList<Product> {
         val jsonString = getJsonDataFromAsset(context)
         val listProductType = object : TypeToken<List<Product>>() {}.type
         return Gson().fromJson(jsonString, listProductType)

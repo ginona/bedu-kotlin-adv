@@ -1,12 +1,15 @@
 package org.bedu.listdetailfragment
 
 import android.content.Context
+import android.media.Rating
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import coil.api.load
 import com.gino.projectbedu.R
 
 class RecyclerAdapter(
@@ -36,15 +39,15 @@ class RecyclerAdapter(
 
     class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val productName = view.findViewById(R.id.tvProduct) as TextView
-        val description = view.findViewById(R.id.tvDescription) as TextView
         val price = view.findViewById(R.id.tvPrice) as TextView
         val image = view.findViewById(R.id.imgProduct) as ImageView
+        val rating = view.findViewById<RatingBar>(R.id.rbRate)
 
         fun bind(product: Product, context: Context){
-            productName.text = product.name
-            description.text = product.description
+            productName.text = product.title
             price.text = product.price
-            image.setImageResource(product.idImage)
+            rating.rating = product.rating
+            image.load(product.image)
         }
     }
 

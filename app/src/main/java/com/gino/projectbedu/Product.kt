@@ -3,28 +3,35 @@ package org.bedu.listdetailfragment
 import android.os.Parcel
 import android.os.Parcelable
 
+
 class Product (
-    val name: String,
-    val description: String,
-    val price: String,
+    val id: Int,
+    val title: String,
     val rating: Float,
-    val idImage: Int
+    val price: String,
+    val description: String,
+    val category: String,
+    val image: String
 ): Parcelable {
     constructor(parcel: Parcel) : this(
+        parcel.readInt(),
+        parcel.readString()!!,
+        parcel.readFloat()!!,
         parcel.readString()!!,
         parcel.readString()!!,
         parcel.readString()!!,
-        parcel.readFloat(),
-        parcel.readInt()
+        parcel.readString()!!
     ) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(name)
+        parcel.writeInt(id)
+        parcel.writeString(title)
         parcel.writeString(description)
         parcel.writeString(price)
+        parcel.writeString(category)
         parcel.writeFloat(rating)
-        parcel.writeInt(idImage)
+        parcel.writeString(image)
     }
 
     override fun describeContents(): Int {

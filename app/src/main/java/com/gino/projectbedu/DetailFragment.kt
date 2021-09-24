@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
+import coil.api.load
 import org.bedu.listdetailfragment.Product
 
 /**
@@ -18,10 +19,10 @@ import org.bedu.listdetailfragment.Product
 class DetailFragment : Fragment() {
 
     private lateinit var tvProduct: TextView
-    private lateinit var tvDescription: TextView
     private lateinit var rbRate: RatingBar
     private lateinit var imgProduct: ImageView
     private lateinit var tvPrice: TextView
+    private lateinit var tvDescription: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,10 +41,10 @@ class DetailFragment : Fragment() {
 
     fun showProduct(product: Product){
         view?.visibility = View.VISIBLE
-        tvProduct.text = product.name
+        tvProduct.text = product.title
         tvDescription.text = product.description
         rbRate.rating = product.rating
-        imgProduct.setImageResource(product.idImage)
+        imgProduct.load(product.image)
         tvPrice.text = product.price
     }
 
