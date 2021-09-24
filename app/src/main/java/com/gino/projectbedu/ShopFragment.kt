@@ -54,17 +54,16 @@ class ShopFragment : Fragment() {
     }
 
     private fun setUpRecyclerView(){
-        val testing = getProducts(requireContext())
         recyclerProducts.setHasFixedSize(true)
         recyclerProducts.layoutManager = LinearLayoutManager(activity)
-        mAdapter = RecyclerAdapter( requireActivity(), testing, listener)
+        mAdapter = RecyclerAdapter( requireActivity(), getProducts(requireContext()), listener)
         recyclerProducts.adapter = mAdapter
     }
 
     private fun getProducts(): MutableList<Product>{
         var products:MutableList<Product> = ArrayList()
 
-        products.add(Product(1,"Control ps5", 4.7f, "$1400", "Disponible el 20 de noviembre", "electronics", "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg"))
+        products.add(Product(1,"Control ps5",4.7f,"7000","Soy una descripción", "Soy una categoria","https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_.jpg"))
 
         return products
     }

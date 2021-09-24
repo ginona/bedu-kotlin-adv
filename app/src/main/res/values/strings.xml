@@ -16,6 +16,7 @@
     <string name="description_title">Descripción</string>
     <string name="available">Disponible en tu domicilio</string>
     <string name="ship">Entrega mañana</string>
-    <string name="price">$1000</string>
+    <string name="peso_symbol">$</string>
+    <string name="price">1000</string>
     <string name="products_near_to_you">Productos cerca de ti</string>
 </resources>

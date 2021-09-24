@@ -27,10 +27,10 @@ class Product (
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(id)
         parcel.writeString(title)
-        parcel.writeString(description)
-        parcel.writeString(price)
-        parcel.writeString(category)
         parcel.writeFloat(rating)
+        parcel.writeString(price)
+        parcel.writeString(description)
+        parcel.writeString(category)
         parcel.writeString(image)
     }
 

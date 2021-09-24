@@ -20,9 +20,9 @@ class DetailFragment : Fragment() {
 
     private lateinit var tvProduct: TextView
     private lateinit var rbRate: RatingBar
-    private lateinit var imgProduct: ImageView
     private lateinit var tvPrice: TextView
     private lateinit var tvDescription: TextView
+    private lateinit var imgProduct: ImageView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,10 +31,10 @@ class DetailFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_detail, container, false)
 
         tvProduct = view.findViewById(R.id.tvProduct)
-        tvDescription = view.findViewById(R.id.tvDescription)
         rbRate = view.findViewById(R.id.rbRate)
-        imgProduct = view.findViewById(R.id.imgProduct)
         tvPrice = view.findViewById(R.id.tvPrice)
+        tvDescription = view.findViewById(R.id.tvDescription)
+        imgProduct = view.findViewById(R.id.imgProduct)
 
         return view
     }
@@ -42,10 +42,10 @@ class DetailFragment : Fragment() {
     fun showProduct(product: Product){
         view?.visibility = View.VISIBLE
         tvProduct.text = product.title
-        tvDescription.text = product.description
         rbRate.rating = product.rating
-        imgProduct.load(product.image)
         tvPrice.text = product.price
+        tvDescription.text = product.description
+        imgProduct.load(product.image)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

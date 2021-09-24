@@ -39,14 +39,14 @@ class RecyclerAdapter(
 
     class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val productName = view.findViewById(R.id.tvProduct) as TextView
+        val rating = view.findViewById<RatingBar>(R.id.rbRate)
         val price = view.findViewById(R.id.tvPrice) as TextView
         val image = view.findViewById(R.id.imgProduct) as ImageView
-        val rating = view.findViewById<RatingBar>(R.id.rbRate)
 
         fun bind(product: Product, context: Context){
             productName.text = product.title
-            price.text = product.price
             rating.rating = product.rating
+            price.text = product.price
             image.load(product.image)
         }
     }
