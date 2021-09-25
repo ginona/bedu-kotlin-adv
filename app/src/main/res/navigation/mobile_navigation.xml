@@ -3,11 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
+    android:label="mobile_navigation"
     app:startDestination="@id/login_dest">
     <fragment
         android:id="@+id/login_dest"
         android:name="com.gino.projectbedu.LoginFragment"
-        android:label="LoginFragment" >
+        android:label="login_dest">
         <action
             android:id="@+id/action_loginFragment_to_registerFragment2"
             app:destination="@id/register_dest" />
@@ -18,22 +19,22 @@
     <fragment
         android:id="@+id/register_dest"
         android:name="com.gino.projectbedu.RegisterFragment"
-        android:label="RegisterFragment" />
+        android:label="register_dest" />
     <fragment
         android:id="@+id/shop_dest"
         android:name="com.gino.projectbedu.ShopFragment"
-        android:label="fragment_shop"
+        android:label="shop_dest"
         tools:layout="@layout/fragment_shop" />
     <fragment
         android:id="@+id/detail_dest"
         android:name="com.gino.projectbedu.DetailFragment"
-        android:label="DetailFragment" />
+        android:label="detail_dest" />
     <fragment
         android:id="@+id/cart_dest"
         android:name="com.gino.projectbedu.CartFragment"
-        android:label="CartFragment" />
+        android:label="cart_dest" />
     <fragment
         android:id="@+id/profile_dest"
         android:name="com.gino.projectbedu.ProfileFragment"
-        android:label="ProfileFragment" />
+        android:label="profile_dest" />
 </navigation>
