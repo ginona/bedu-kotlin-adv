@@ -56,14 +56,15 @@
         android:id="@+id/tvProduct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Producto"
+        android:text="@string/product"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:paddingRight="10dp"
+        android:paddingEnd="10dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline8"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="@+id/guideline11"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="RtlSymmetry" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"

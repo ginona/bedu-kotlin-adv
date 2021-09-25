@@ -32,4 +32,12 @@
         android:id="@+id/detailFragment"
         android:name="com.gino.projectbedu.DetailFragment"
         android:label="DetailFragment" />
+    <fragment
+        android:id="@+id/cart_dest"
+        android:name="com.gino.projectbedu.CartFragment"
+        android:label="CartFragment" />
+    <fragment
+        android:id="@+id/profile_dest"
+        android:name="com.gino.projectbedu.ProfileFragment"
+        android:label="ProfileFragment" />
 </navigation>

@@ -1,5 +1,6 @@
 package com.gino.projectbedu
 
+import android.app.Activity
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
@@ -10,6 +11,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 /**
  * A simple [Fragment] subclass.
@@ -17,12 +19,12 @@ import androidx.navigation.fragment.findNavController
  * create an instance of this fragment.
  */
 class LoginFragment : Fragment() {
-    // TODO: Rename and change types of parameters
     private lateinit var emailText: EditText
     private lateinit var passwordText: EditText
+    //private lateinit var bottomNavigationView: BottomNavigationView
+
     private val emailRequired = "Email is required."
     private val passwordRequired = "Password is required."
-    private val success = "You are in!"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,6 +35,9 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+       // val activity: Activity = requireActivity()
+       // bottomNavigationView = activity.findViewById(R.id.bottom_navigation)
+       // bottomNavigationView.visibility = View.GONE
         val btnLogin = view.findViewById<Button>(R.id.btnLogin)
         val textRegister = view.findViewById<TextView>(R.id.textRegister)
         emailText = view.findViewById(R.id.emailText)
