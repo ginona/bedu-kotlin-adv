@@ -35,9 +35,8 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-       // val activity: Activity = requireActivity()
-       // bottomNavigationView = activity.findViewById(R.id.bottom_navigation)
-       // bottomNavigationView.visibility = View.GONE
+        //bottomNavigationView = view.findViewById(R.id.bottom_navigation)
+        //bottomNavigationView.visibility = View.GONE
         val btnLogin = view.findViewById<Button>(R.id.btnLogin)
         val textRegister = view.findViewById<TextView>(R.id.textRegister)
         emailText = view.findViewById(R.id.emailText)
