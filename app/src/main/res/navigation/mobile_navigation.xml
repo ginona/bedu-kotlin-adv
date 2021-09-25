@@ -12,7 +12,7 @@
             android:id="@+id/action_loginFragment_to_registerFragment2"
             app:destination="@id/register_dest" />
         <action
-            android:id="@+id/action_login_dest_to_shopFragment"
+            android:id="@+id/action_login_dest_to_shop_dest"
             app:destination="@id/shop_dest" />
     </fragment>
     <fragment
@@ -23,13 +23,9 @@
         android:id="@+id/shop_dest"
         android:name="com.gino.projectbedu.ShopFragment"
         android:label="fragment_shop"
-        tools:layout="@layout/fragment_shop" >
-        <action
-            android:id="@+id/detail_dest"
-            app:destination="@id/detailFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_shop" />
     <fragment
-        android:id="@+id/detailFragment"
+        android:id="@+id/detail_dest"
         android:name="com.gino.projectbedu.DetailFragment"
         android:label="DetailFragment" />
     <fragment

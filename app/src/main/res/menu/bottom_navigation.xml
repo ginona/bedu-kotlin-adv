@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-    android:id="@+id/ic_home"
+    android:id="@+id/shop_dest"
     android:icon="@drawable/home"
-    android:title="Home"
+    android:title="@string/home"
     />
     <item
-    android:id="@+id/ic_cart"
+    android:id="@+id/cart_dest"
     android:icon="@drawable/shopping_cart"
-    android:title="Carrito"
+    android:title="@string/cart"
     />
     <item
-    android:id="@+id/ic_profile"
+    android:id="@+id/profile_dest"
     android:icon="@drawable/person"
-    android:title="Perfil"
+    android:title="@string/profile"
     />
 </menu>
