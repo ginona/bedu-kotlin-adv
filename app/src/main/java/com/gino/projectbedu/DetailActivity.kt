@@ -2,14 +2,11 @@ package com.gino.projectbedu
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.internal.ContextUtils.getActivity
-import org.bedu.listdetailfragment.Product
 
 class DetailActivity : AppCompatActivity() {
 
     companion object {
-        val PRODUCT = "PRODUCT"
+        const val PRODUCT = "PRODUCT"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

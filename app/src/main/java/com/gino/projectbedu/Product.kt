@@ -1,4 +1,4 @@
-package org.bedu.listdetailfragment
+package com.gino.projectbedu
 
 import android.os.Parcel
 import android.os.Parcelable

@@ -10,8 +10,19 @@
     <color name="orange">#f03c15</color>
     <color name="background">#172126</color>
 
+    <color name="primaryColor">#172126</color>
+    <color name="primaryLightColor">#3e484e</color>
+    <color name="primaryDarkColor">#000000</color>
+    <color name="primaryTextColor">#ffffff</color>
+
+    <color name="secondaryColor">#f03c15</color>
+    <color name="secondaryLightColor">#ff7244</color>
+    <color name="secondaryDarkColor">#b50000</color>
+    <color name="secondaryTextColor">#000000</color>
+
     <color name="green_dark">#062925</color>
     <color name="green_normal">#044a42</color>
     <color name="green_light">#3a9188</color>
     <color name="green_light_2">#b8e1dd</color>
+
 </resources>

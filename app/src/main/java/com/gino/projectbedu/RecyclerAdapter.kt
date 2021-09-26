@@ -1,7 +1,6 @@
-package org.bedu.listdetailfragment
+package com.gino.projectbedu
 
 import android.content.Context
-import android.media.Rating
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,6 @@ import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
-import com.gino.projectbedu.R
 
 class RecyclerAdapter(
     private val context:Context,
@@ -22,10 +20,7 @@ class RecyclerAdapter(
         holder.bind(product, context)
 
         holder.view.setOnClickListener{clickListener(product)}
-
     }
-
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)

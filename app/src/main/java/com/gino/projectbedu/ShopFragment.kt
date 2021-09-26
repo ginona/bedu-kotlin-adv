@@ -1,5 +1,6 @@
 package com.gino.projectbedu
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -9,21 +10,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import org.bedu.listdetailfragment.Product
-import org.bedu.listdetailfragment.RecyclerAdapter
 import java.io.IOException
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ShopFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ShopFragment : Fragment() {
     private lateinit var mAdapter : RecyclerAdapter
     private var listener : (Product) ->Unit = {}
     private lateinit var recyclerProducts: RecyclerView
+    private lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,6 +42,10 @@ class ShopFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val activity: Activity = requireActivity()
+        bottomNavigationView = activity.findViewById(R.id.bottom_navigation)
+        bottomNavigationView.visibility = View.VISIBLE
+
         setListener {
             val intent = Intent(requireActivity(), DetailActivity::class.java)
             intent.putExtra(DetailActivity.PRODUCT,it)

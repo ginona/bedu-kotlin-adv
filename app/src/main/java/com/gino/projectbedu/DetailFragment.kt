@@ -9,13 +9,7 @@ import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
 import coil.api.load
-import org.bedu.listdetailfragment.Product
 
-/**
- * A simple [Fragment] subclass.
- * Use the [DetailFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class DetailFragment : Fragment() {
 
     private lateinit var tvProduct: TextView
@@ -48,7 +42,4 @@ class DetailFragment : Fragment() {
         imgProduct.load(product.image)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-    }
 }

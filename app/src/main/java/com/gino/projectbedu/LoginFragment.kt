@@ -13,15 +13,10 @@ import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-/**
- * A simple [Fragment] subclass.
- * Use the [LoginFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class LoginFragment : Fragment() {
     private lateinit var emailText: EditText
     private lateinit var passwordText: EditText
-    //private lateinit var bottomNavigationView: BottomNavigationView
+    private lateinit var bottomNavigationView: BottomNavigationView
 
     private val emailRequired = "Email is required."
     private val passwordRequired = "Password is required."
@@ -35,8 +30,10 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //bottomNavigationView = view.findViewById(R.id.bottom_navigation)
-        //bottomNavigationView.visibility = View.GONE
+        val activity: Activity = requireActivity()
+        bottomNavigationView = activity.findViewById(R.id.bottom_navigation)
+        bottomNavigationView.visibility = View.GONE
+
         val btnLogin = view.findViewById<Button>(R.id.btnLogin)
         val textRegister = view.findViewById<TextView>(R.id.textRegister)
         emailText = view.findViewById(R.id.emailText)
