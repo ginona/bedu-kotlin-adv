@@ -1,8 +1,18 @@
 package com.gino.projectbedu
 
+import android.annotation.SuppressLint
+import android.content.ClipData
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
+import android.widget.ImageButton
+import android.widget.Toast
 import android.widget.Toolbar
+import androidx.appcompat.view.menu.MenuBuilder
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -32,6 +42,27 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setupWithNavController(navController)
 
     }
+    @SuppressLint("RestrictedApi")
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.top_menu, menu)
+        val m = menu as MenuBuilder
+        m.setOptionalIconsVisible(true)
+        return super.onCreateOptionsMenu(menu)
+    }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId){
+            R.id.search -> {
+                Toast.makeText(this, "La búsqueda está deshabilitada.", Toast.LENGTH_SHORT).show()
+            }
+            R.id.help -> {
+                val uri : Uri = Uri.parse("https://www.bedu.org")
+                val intent : Intent = Intent(Intent.ACTION_VIEW, uri)
+                startActivity(intent)
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
 }

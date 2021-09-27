@@ -3,10 +3,8 @@ package com.gino.projectbedu
 import android.app.Activity
 import android.os.Bundle
 import android.text.TextUtils
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -25,6 +23,7 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        setHasOptionsMenu(true);
         return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
@@ -57,5 +56,10 @@ class LoginFragment : Fragment() {
                 findNavController().navigate(R.id.register_dest, null)
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater!!)
+        menu.clear()
     }
 }
