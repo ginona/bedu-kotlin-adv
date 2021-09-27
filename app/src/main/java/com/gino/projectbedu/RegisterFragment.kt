@@ -2,6 +2,7 @@ package com.gino.projectbedu
 
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +13,7 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 
 class RegisterFragment : Fragment() {
-    private val requiredMessage : String = "Required value."
+    private val requiredMessage : String = "Ingresa un elemento válido."
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,9 +32,9 @@ class RegisterFragment : Fragment() {
 
         btnRegister.setOnClickListener {
             if (TextUtils.isEmpty(txtName.text)) txtName.error = requiredMessage
-            if (TextUtils.isEmpty(txtEmail.text)) txtEmail.error = requiredMessage
-            if (TextUtils.isEmpty(txtTelephone.text)) txtTelephone.error = requiredMessage
-            if (TextUtils.isEmpty(txtPassword.text)) txtPassword.error = requiredMessage
+            else if (!Patterns.EMAIL_ADDRESS.matcher(txtEmail.text).matches()) txtEmail.error = requiredMessage
+            else if (TextUtils.isEmpty(txtTelephone.text)) txtTelephone.error = requiredMessage
+            else if (TextUtils.isEmpty(txtPassword.text)) txtPassword.error = requiredMessage
             else{
                 btnRegister?.setOnClickListener {
                     findNavController().navigate(R.id.login_dest, null)

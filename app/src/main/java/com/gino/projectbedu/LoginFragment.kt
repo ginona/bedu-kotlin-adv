@@ -3,6 +3,7 @@ package com.gino.projectbedu
 import android.app.Activity
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Patterns
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Button
@@ -16,7 +17,7 @@ class LoginFragment : Fragment() {
     private lateinit var passwordText: EditText
     private lateinit var bottomNavigationView: BottomNavigationView
 
-    private val emailRequired = "Email is required."
+    private val emailRequired = "Formato de E-mail incorrecto."
     private val passwordRequired = "Password is required."
 
     override fun onCreateView(
@@ -40,11 +41,11 @@ class LoginFragment : Fragment() {
 
 
         btnLogin.setOnClickListener {
-            if (TextUtils.isEmpty(emailText.text))
+            if (!Patterns.EMAIL_ADDRESS.matcher(emailText.text).matches())
                 emailText.error = emailRequired
-            if (TextUtils.isEmpty(passwordText.text))
+            else if (TextUtils.isEmpty(passwordText.text))
                 passwordText.error = passwordRequired
-            else{
+            else {
                 btnLogin?.setOnClickListener {
                     findNavController().navigate(R.id.shop_dest, null)
                 }
