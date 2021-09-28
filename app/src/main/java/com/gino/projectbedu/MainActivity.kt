@@ -1,19 +1,14 @@
 package com.gino.projectbedu
 
 import android.annotation.SuppressLint
-import android.content.ClipData
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.widget.ImageButton
 import android.widget.Toast
-import android.widget.Toolbar
 import androidx.appcompat.view.menu.MenuBuilder
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
