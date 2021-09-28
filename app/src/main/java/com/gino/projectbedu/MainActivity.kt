@@ -24,6 +24,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var bottomNavigationView: BottomNavigationView
 
+    /**
+     * En este caso, en el onCreate solamente estamos dando generando y dando
+     * funcionalidad al BottomNavigationView
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -42,6 +46,10 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setupWithNavController(navController)
 
     }
+
+    /**
+     * Realizamos el inflate el menú top
+     */
     @SuppressLint("RestrictedApi")
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
@@ -51,6 +59,9 @@ class MainActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
+    /**
+     * Agregamos lógica a los items del menu top.
+     */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId){
             R.id.search -> {

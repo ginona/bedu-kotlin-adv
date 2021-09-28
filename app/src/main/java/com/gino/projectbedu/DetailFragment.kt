@@ -10,6 +10,10 @@ import android.widget.RatingBar
 import android.widget.TextView
 import coil.api.load
 
+/**
+ * Fragmento utilizado para hacer visible el detalle
+ * del producto que seleccionamos desde la lista completa.
+ */
 class DetailFragment : Fragment() {
 
     private lateinit var tvProduct: TextView
@@ -23,7 +27,9 @@ class DetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_detail, container, false)
-
+        /**
+         * Tramos desde la vista los elementos propios de ella.
+         */
         tvProduct = view.findViewById(R.id.tvProduct)
         rbRate = view.findViewById(R.id.rbRate)
         tvPrice = view.findViewById(R.id.tvPrice)
@@ -34,6 +40,10 @@ class DetailFragment : Fragment() {
     }
 
     fun showProduct(product: Product){
+        /**
+         * Asignamos a cada elemento de la vista
+         * los datos correspondientes.
+         */
         view?.visibility = View.VISIBLE
         tvProduct.text = product.title
         rbRate.rating = product.rating

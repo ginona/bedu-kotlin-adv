@@ -12,6 +12,9 @@ import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
+/**
+ * Fragment de inicio
+ */
 class LoginFragment : Fragment() {
     private lateinit var emailText: EditText
     private lateinit var passwordText: EditText
@@ -39,19 +42,23 @@ class LoginFragment : Fragment() {
         emailText = view.findViewById(R.id.emailText)
         passwordText = view.findViewById(R.id.passwordText)
 
-
+        /**
+         * Si se cumplen las condiciones especificadas, se podría iniciar sesión
+         * y navegar directamente hacia la lista de productos.
+         */
         btnLogin.setOnClickListener {
-            if (!Patterns.EMAIL_ADDRESS.matcher(emailText.text).matches())
-                emailText.error = emailRequired
-            else if (TextUtils.isEmpty(passwordText.text))
-                passwordText.error = passwordRequired
+            if (!Patterns.EMAIL_ADDRESS.matcher(emailText.text).matches()) emailText.error = emailRequired
+            else if (TextUtils.isEmpty(passwordText.text)) passwordText.error = passwordRequired
             else {
                 btnLogin?.setOnClickListener {
                     findNavController().navigate(R.id.shop_dest, null)
                 }
             }
         }
-
+        /**
+         * En caso de querer registrarse, al hacer clic en el text
+         * te redigirá a la pantalla de Registro
+         */
         textRegister.setOnClickListener {
             textRegister?.setOnClickListener {
                 findNavController().navigate(R.id.register_dest, null)

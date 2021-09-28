@@ -6,6 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
+/**
+ * Fragment vacío a modo ejemplo momentaneamente.
+ */
 class ProfileFragment : Fragment() {
 
     override fun onCreateView(

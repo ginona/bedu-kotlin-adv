@@ -27,10 +27,6 @@ Sync now
 
 _Y para finalizar ejecuta dando clic en el botón play del IDE_
 
-
-## Despliegue 📦
-
-
 ## Construido con 🛠️
 
 * [Android Studio](https://developer.android.com/studio) - El IDE usado
@@ -38,4 +34,4 @@ _Y para finalizar ejecuta dando clic en el botón play del IDE_
 
 ## Autor ✒️
 
-* **Gino B. Nacchio** - [ginona](https://github.com/ginona)
+* **Gino B. Nacchio** - [LinkedIn](https://www.linkedin.com/in/ginonacchio/)

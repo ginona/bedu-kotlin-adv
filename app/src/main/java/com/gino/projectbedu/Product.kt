@@ -3,7 +3,10 @@ package com.gino.projectbedu
 import android.os.Parcel
 import android.os.Parcelable
 
-
+/**
+ * Clase producto donde se implementa la interfaz Parcelable
+ * dando la posibilidad de pasar objetos a otro componente, por ejemplo, Detail.
+ */
 class Product (
     val id: Int,
     val title: String,

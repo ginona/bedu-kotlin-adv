@@ -45,7 +45,10 @@ class ShopFragment : Fragment() {
         val activity: Activity = requireActivity()
         bottomNavigationView = activity.findViewById(R.id.bottom_navigation)
         bottomNavigationView.visibility = View.VISIBLE
-
+        /**
+         * Agregamos un listener en cada producto de la lista, para que al hacer clic
+         * se muestre el detalle del mismo.
+         */
         setListener {
             val intent = Intent(requireActivity(), DetailActivity::class.java)
             intent.putExtra(DetailActivity.PRODUCT,it)
@@ -53,10 +56,13 @@ class ShopFragment : Fragment() {
         }
     }
 
+    /**
+     * Seteamos nuestro recyclerView
+     */
     private fun setUpRecyclerView(){
         recyclerProducts.setHasFixedSize(true)
         recyclerProducts.layoutManager = LinearLayoutManager(activity)
-        mAdapter = RecyclerAdapter( requireActivity(), getProducts(requireContext()), listener)
+        mAdapter = RecyclerAdapter(requireActivity(), getProducts(requireContext()), listener)
         recyclerProducts.adapter = mAdapter
     }
 
@@ -68,6 +74,10 @@ class ShopFragment : Fragment() {
         return products
     }
 
+    /**
+     * Método que sirve para parsear nuestro JSON
+     * de tal forma que cada variable del mismo coincida con nuestro objeto Product.
+     */
     private fun getJsonDataFromAsset(context: Context, fileName: String = "products.json"): String? {
         val jsonString: String
         try {
@@ -79,6 +89,9 @@ class ShopFragment : Fragment() {
         return jsonString
     }
 
+    /**
+     * Método que recibe el contexto y retorna la lista de Products
+     */
     fun getProducts(context: Context): MutableList<Product> {
         val jsonString = getJsonDataFromAsset(context)
         val listProductType = object : TypeToken<List<Product>>() {}.type
