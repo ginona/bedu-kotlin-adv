@@ -1,4 +1,4 @@
-package com.gino.projectbedu
+package com.gino.projectbedu.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,6 +9,8 @@ import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
 import coil.api.load
+import com.gino.projectbedu.Product
+import com.gino.projectbedu.R
 
 /**
  * Fragmento utilizado para hacer visible el detalle

@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
     <fragment
         android:id="@+id/fragmentDetail"
-        class="com.gino.projectbedu.DetailFragment"
+        class="com.gino.projectbedu.fragments.DetailFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

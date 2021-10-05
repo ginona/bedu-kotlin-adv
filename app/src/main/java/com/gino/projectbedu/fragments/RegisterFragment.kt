@@ -1,4 +1,4 @@
-package com.gino.projectbedu
+package com.gino.projectbedu.fragments
 
 import android.os.Bundle
 import android.text.TextUtils
@@ -9,8 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import com.gino.projectbedu.R
 
 /**
  * Fragment para registrar un nuevo usuario.
@@ -43,9 +43,7 @@ class RegisterFragment : Fragment() {
             else if (TextUtils.isEmpty(txtTelephone.text)) txtTelephone.error = requiredMessage
             else if (TextUtils.isEmpty(txtPassword.text)) txtPassword.error = requiredMessage
             else{
-                btnRegister?.setOnClickListener {
                     findNavController().navigate(R.id.login_dest, null)
-                }
             }
         }
     }

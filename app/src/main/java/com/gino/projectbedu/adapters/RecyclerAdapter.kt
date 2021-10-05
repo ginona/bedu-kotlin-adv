@@ -1,4 +1,4 @@
-package com.gino.projectbedu
+package com.gino.projectbedu.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,6 +9,8 @@ import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
+import com.gino.projectbedu.Product
+import com.gino.projectbedu.R
 
 /**
  * Adaptador empleado para mostrar los elementos en la lista.

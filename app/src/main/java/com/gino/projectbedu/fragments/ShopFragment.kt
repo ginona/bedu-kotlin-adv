@@ -1,6 +1,7 @@
-package com.gino.projectbedu
+package com.gino.projectbedu.fragments
 
 import android.app.Activity
+import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -10,6 +11,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.gino.projectbedu.DetailActivity
+import com.gino.projectbedu.Product
+import com.gino.projectbedu.R
+import com.gino.projectbedu.adapters.RecyclerAdapter
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -53,6 +58,7 @@ class ShopFragment : Fragment() {
             val intent = Intent(requireActivity(), DetailActivity::class.java)
             intent.putExtra(DetailActivity.PRODUCT,it)
             startActivity(intent)
+            activity.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         }
     }
 

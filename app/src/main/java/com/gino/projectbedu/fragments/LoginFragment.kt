@@ -1,4 +1,4 @@
-package com.gino.projectbedu
+package com.gino.projectbedu.fragments
 
 import android.app.Activity
 import android.os.Bundle
@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
+import com.gino.projectbedu.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 /**
@@ -50,9 +51,7 @@ class LoginFragment : Fragment() {
             if (!Patterns.EMAIL_ADDRESS.matcher(emailText.text).matches()) emailText.error = emailRequired
             else if (TextUtils.isEmpty(passwordText.text)) passwordText.error = passwordRequired
             else {
-                btnLogin?.setOnClickListener {
                     findNavController().navigate(R.id.shop_dest, null)
-                }
             }
         }
         /**
@@ -60,9 +59,7 @@ class LoginFragment : Fragment() {
          * te redigirá a la pantalla de Registro
          */
         textRegister.setOnClickListener {
-            textRegister?.setOnClickListener {
                 findNavController().navigate(R.id.register_dest, null)
-            }
         }
     }
 

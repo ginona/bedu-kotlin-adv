@@ -2,6 +2,7 @@ package com.gino.projectbedu
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.gino.projectbedu.fragments.DetailFragment
 
 class DetailActivity : AppCompatActivity() {
 
