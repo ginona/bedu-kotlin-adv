@@ -24,4 +24,7 @@
     <string name="home">Home</string>
     <string name="cart">Carrito</string>
     <string name="profile">Perfil</string>
+    <string name="test_mail">test@test.com</string>
+    <string name="my_directions">Mis direcciones</string>
+    <string name="logout">Cerrar sesión</string>
 </resources>

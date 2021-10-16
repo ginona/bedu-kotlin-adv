@@ -5,6 +5,8 @@
       <map>
         <entry key="..\:/Users/ginon/AndroidStudioProjects/ProjectBedu/app/src/free/res/layout/layout.xml" value="0.3875" />
         <entry key="..\:/Users/ginon/AndroidStudioProjects/ProjectBedu/app/src/free/res/layout/layout_ads.xml" value="0.3875" />
+        <entry key="..\:/Users/ginon/AndroidStudioProjects/ProjectBedu/app/src/main/res/drawable/person.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/ginon/AndroidStudioProjects/ProjectBedu/app/src/main/res/drawable/search.xml" value="0.4036458333333333" />
         <entry key="..\:/Users/ginon/AndroidStudioProjects/ProjectBedu/app/src/main/res/layout-v23/fragment_login.xml" value="0.3442028985507246" />
         <entry key="..\:/Users/ginon/AndroidStudioProjects/ProjectBedu/app/src/main/res/layout/activity_detail.xml" value="0.12907608695652173" />
         <entry key="..\:/Users/ginon/AndroidStudioProjects/ProjectBedu/app/src/main/res/layout/activity_login.xml" value="0.23645833333333333" />
@@ -14,10 +16,11 @@
         <entry key="..\:/Users/ginon/AndroidStudioProjects/ProjectBedu/app/src/main/res/layout/fragment_cart.xml" value="0.3875" />
         <entry key="..\:/Users/ginon/AndroidStudioProjects/ProjectBedu/app/src/main/res/layout/fragment_detail.xml" value="0.2" />
         <entry key="..\:/Users/ginon/AndroidStudioProjects/ProjectBedu/app/src/main/res/layout/fragment_login.xml" value="0.1" />
-        <entry key="..\:/Users/ginon/AndroidStudioProjects/ProjectBedu/app/src/main/res/layout/fragment_profile.xml" value="0.3875" />
+        <entry key="..\:/Users/ginon/AndroidStudioProjects/ProjectBedu/app/src/main/res/layout/fragment_profile.xml" value="0.2738292011019284" />
+        <entry key="..\:/Users/ginon/AndroidStudioProjects/ProjectBedu/app/src/main/res/layout/fragment_profile_elements.xml" value="0.322463768115942" />
         <entry key="..\:/Users/ginon/AndroidStudioProjects/ProjectBedu/app/src/main/res/layout/fragment_register.xml" value="0.3532608695652174" />
         <entry key="..\:/Users/ginon/AndroidStudioProjects/ProjectBedu/app/src/main/res/layout/fragment_shop.xml" value="0.1" />
-        <entry key="..\:/Users/ginon/AndroidStudioProjects/ProjectBedu/app/src/main/res/layout/item_product.xml" value="0.4" />
+        <entry key="..\:/Users/ginon/AndroidStudioProjects/ProjectBedu/app/src/main/res/layout/item_product.xml" value="0.536" />
         <entry key="..\:/Users/ginon/AndroidStudioProjects/ProjectBedu/app/src/main/res/layout/template_detail.xml" value="0.1" />
         <entry key="..\:/Users/ginon/AndroidStudioProjects/ProjectBedu/app/src/main/res/menu/bottom_navigation.xml" value="0.3875" />
         <entry key="..\:/Users/ginon/AndroidStudioProjects/ProjectBedu/app/src/main/res/menu/options_menu.xml" value="0.264" />
@@ -30,8 +33,5 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
-  </component>
-  <component name="SuppressKotlinCodeStyleNotification">
-    <option name="disableForAll" value="true" />
   </component>
 </project>
