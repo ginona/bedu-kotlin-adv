@@ -43,7 +43,7 @@ class RegisterFragment : Fragment() {
             else if (TextUtils.isEmpty(txtTelephone.text)) txtTelephone.error = requiredMessage
             else if (TextUtils.isEmpty(txtPassword.text)) txtPassword.error = requiredMessage
             else{
-                    findNavController().navigate(R.id.login_dest, null)
+                    findNavController().navigate(R.id.action_register_dest_to_login_dest, null)
             }
         }
     }

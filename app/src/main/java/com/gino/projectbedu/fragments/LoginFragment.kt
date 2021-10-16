@@ -59,7 +59,7 @@ class LoginFragment : Fragment() {
          * te redigirá a la pantalla de Registro
          */
         textRegister.setOnClickListener {
-                findNavController().navigate(R.id.register_dest, null)
+                findNavController().navigate(R.id.action_login_dest_to_register_dest, null)
         }
     }
 

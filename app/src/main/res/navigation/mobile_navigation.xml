@@ -10,19 +10,19 @@
         android:name="com.gino.projectbedu.fragments.LoginFragment"
         android:label="Bedu">
         <action
-            android:id="@+id/action_loginFragment_to_registerFragment2"
-            app:destination="@id/register_dest"
-            app:enterAnim="@anim/push_right_in"
-            app:exitAnim="@anim/push_right_in"
-            app:popEnterAnim="@anim/push_right_in"
-            app:popExitAnim="@anim/push_right_in" />
-        <action
             android:id="@+id/action_login_dest_to_shop_dest"
             app:destination="@id/shop_dest"
-            app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/fade_out"
-            app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/fade_out" />
+            app:enterAnim="@anim/slide_in_up"
+            app:exitAnim="@anim/slide_out_down"
+            app:popEnterAnim="@anim/slide_in_down"
+            app:popExitAnim="@anim/slide_out_up" />
+        <action
+            android:id="@+id/action_login_dest_to_register_dest"
+            app:destination="@id/register_dest"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/register_dest"
@@ -31,10 +31,10 @@
         <action
             android:id="@+id/action_register_dest_to_login_dest"
             app:destination="@id/login_dest"
-            app:enterAnim="@anim/push_right_in"
-            app:exitAnim="@anim/push_right_in"
-            app:popEnterAnim="@anim/push_right_in"
-            app:popExitAnim="@anim/push_right_in" />
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/shop_dest"
