@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.util.Patterns
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -16,7 +17,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import okhttp3.*
+import org.json.JSONArray
+import org.json.JSONException
 import org.json.JSONObject
+import java.io.IOException
 
 /**
  * Fragment de inicio
@@ -79,54 +83,77 @@ class LoginFragment : Fragment() {
         menu.clear()
     }
 
-    private fun checkUserEmail(view: View) {
-        var check = false
-        for(userNumber in 1..12){
-            val okHttpClient = OkHttpClient()
-            val url = "$baseUrl$userNumber"
-            val request = Request.Builder()
-                .url(url)
-                .build()
+    private fun asyncCall() {
+        val okHttpClient = OkHttpClient()
 
-            try {
-                val response = okHttpClient.newCall(request).execute()
-                val body = response.body?.toString()
+        val request = Request.Builder()
+            .url(baseUrl)
+            .build()
 
-                val json = JSONObject(body)
-                val dataJSON = JSONObject(json.getString("data"))
-                val email = dataJSON.getString("email")
-                if(emailText.text.toString() == email){
-                    activity?.runOnUiThread {
-                        sharedPreferences?.edit()
-                            ?.putString("USER_EMAIL", emailText.text.toString())
-                            ?.putString("USER_PASSWORD", passwordText.text.toString())
-                            ?.putString("USER_IMAGE", dataJSON.getString("avatar"))
-                            ?.putString("USER_FIRST_NAME", dataJSON.getString("first_name"))
-                            ?.apply()
+        okHttpClient.newCall(request).enqueue(object: Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                Log.d("Response", e.toString())
+                Log.d("Error", e.toString())
+            }
 
-                        //loginSuccessfully()
-                        findNavController().navigate(R.id.action_login_dest_to_shop_dest, null)
-                    }
-                    check = true
-                    break
+            override fun onResponse(call: Call, response: Response) {
+                try {
+                    val json = JSONArray(response.body?.string())
+                    val data = Array<String?>(json.length()) { i -> json.getString(i) }
+                    Log.d("Data: ", data.toString())
+                } catch (e: JSONException) {
+                    e.printStackTrace()
                 }
-            }catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
-        if(!check){
-            activity?.runOnUiThread {
-                //loginProgressBar.visibility = View.INVISIBLE
-                //loginButton.isEnabled = true
-
             }
 
-            Snackbar.make(
-                view,
-                userNotFound,
-                Snackbar.LENGTH_SHORT
-            )
-                .setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_FADE)
-                .setAction(snackbarText) {}.show()}
+        })
+    }
+
+    private fun checkUserEmail(view: View) {
+            val okHttpClient = OkHttpClient()
+            var found = false
+            val request = Request.Builder()
+                .url(baseUrl)
+                .build()
+                okHttpClient.newCall(request).enqueue(object: Callback {
+                    override fun onFailure(call: Call, e: IOException) {
+                        Log.d("Error", e.toString())
+                    }
+
+                    override fun onResponse(call: Call, response: Response) {
+                        try {
+                                val json = JSONObject(response.body?.string())
+                                Log.d("JsonArray", json.toString())
+                                val dataJSON = JSONArray(json.getString("data"))
+                            for (index in 0..dataJSON.length()){
+                                val jsonObject = dataJSON.getJSONObject(index)
+                                val email = jsonObject.getString("email")
+
+                                if(emailText.text.toString() == email){
+                                    activity?.runOnUiThread {
+                                        sharedPreferences?.edit()
+                                            ?.putString("USER_EMAIL", emailText.text.toString())
+                                            ?.putString("USER_PASSWORD", passwordText.text.toString())
+                                            ?.putString("USER_IMAGE", jsonObject.getString("avatar"))
+                                            ?.putString("USER_FIRST_NAME", jsonObject.getString("first_name"))
+                                            ?.apply()
+
+                                        findNavController().navigate(R.id.action_login_dest_to_shop_dest, null)
+                                    }
+                                    found = true
+                                    break
+                                }
+                            }
+                        } catch (e: JSONException) {
+                            e.printStackTrace()
+                        }
+                        if (!found) {
+                            Snackbar.make(view, userNotFound, Snackbar.LENGTH_SHORT)
+                                .setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_FADE)
+                                .setAction(snackbarText) {}.show()
+                        }
+                    }
+
+                })
     }
 }
