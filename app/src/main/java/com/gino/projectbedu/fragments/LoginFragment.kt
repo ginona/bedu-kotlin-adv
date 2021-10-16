@@ -1,6 +1,7 @@
 package com.gino.projectbedu.fragments
 
 import android.app.Activity
+import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.TextUtils
@@ -56,6 +57,8 @@ class LoginFragment : Fragment() {
         emailText = view.findViewById(R.id.emailText)
         passwordText = view.findViewById(R.id.passwordText)
 
+        sharedPreferences =
+            this.activity?.getSharedPreferences("com.gino.projectbedu", Context.MODE_PRIVATE)
         /**
          * Si se cumplen las condiciones especificadas, se podría iniciar sesión
          * y navegar directamente hacia la lista de productos.
@@ -65,7 +68,7 @@ class LoginFragment : Fragment() {
             else if (TextUtils.isEmpty(passwordText.text)) passwordText.error = passwordRequired
             else {
                 Thread{
-                    checkUserEmail(view)
+                    userValidation(view)
                 }.start()
             }
         }
@@ -109,7 +112,7 @@ class LoginFragment : Fragment() {
         })
     }
 
-    private fun checkUserEmail(view: View) {
+    private fun userValidation(view: View) {
             val okHttpClient = OkHttpClient()
             var found = false
             val request = Request.Builder()
@@ -128,14 +131,14 @@ class LoginFragment : Fragment() {
                             for (index in 0..dataJSON.length()){
                                 val jsonObject = dataJSON.getJSONObject(index)
                                 val email = jsonObject.getString("email")
-
-                                if(emailText.text.toString() == email){
+                                val inputMail = emailText.text.toString()
+                                if(inputMail == email){
                                     activity?.runOnUiThread {
                                         sharedPreferences?.edit()
+                                            ?.putString("USER_NAME", jsonObject.getString("first_name"))
                                             ?.putString("USER_EMAIL", emailText.text.toString())
                                             ?.putString("USER_PASSWORD", passwordText.text.toString())
                                             ?.putString("USER_IMAGE", jsonObject.getString("avatar"))
-                                            ?.putString("USER_FIRST_NAME", jsonObject.getString("first_name"))
                                             ?.apply()
 
                                         findNavController().navigate(R.id.action_login_dest_to_shop_dest, null)
