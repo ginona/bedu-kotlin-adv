@@ -1,4 +1,4 @@
-# Proyecto Kotlin Intermedio
+# Proyecto Kotlin Avanzado
 
 _Proyecto que tiene como finalidad demostrar los conceptos aprendidos durante el cursado a través de un modo práctico, en este caso particular, la realización de un e-commerce_
 
