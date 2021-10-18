@@ -16,10 +16,16 @@ import com.gino.projectbedu.activities.DetailActivity
 import com.gino.projectbedu.domain.Product
 import com.gino.projectbedu.R
 import com.gino.projectbedu.adapters.RecyclerAdapter
+import com.gino.projectbedu.services.ApiService
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import okhttp3.*
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 import java.lang.Exception
 
@@ -29,6 +35,7 @@ class ShopFragment : Fragment() {
     private lateinit var recyclerProducts: RecyclerView
     private lateinit var bottomNavigationView: BottomNavigationView
     private val baseUrl = "https://fakestoreapi.com/products"
+    private val url2 = "https://fakestoreapi.com/"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,7 +49,7 @@ class ShopFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        getProductsFromRequest()
+        getProductsService()
     }
 
     fun setListener(l: (Product) ->Unit){
@@ -76,29 +83,25 @@ class ShopFragment : Fragment() {
         recyclerProducts.adapter = mAdapter
     }
 
-    private fun getProductsFromRequest() {
-        val okHttpClient = OkHttpClient()
-        val listProductType = object : TypeToken<List<Product>>() {}.type
-        val request = Request.Builder()
-            .url(baseUrl)
-            .build()
-        okHttpClient.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                Toast.makeText(requireContext(),"No es posible cargar los productos.",Toast.LENGTH_LONG).show()
+    private fun getProductsService() {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val call = Retrofit.Builder()
+                    .baseUrl(url2)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build().create(ApiService::class.java).getProducts("products")
+                val productsReceived = call.body()
+                activity?.runOnUiThread{
+                    if(call.isSuccessful){
+                        setUpRecyclerView(productsReceived?: listOf<Product>())
+                    }else{
+                        Toast.makeText(requireContext(),"No es posible cargar los productos.",Toast.LENGTH_LONG).show()
+                    }
+                }
+            } catch (e: Exception) {
                 Log.d("Error", e.toString())
             }
-
-            override fun onResponse(call: Call, response: Response) {
-                try {
-                    val body = response.body?.string()
-                    activity?.runOnUiThread {
-                        setUpRecyclerView(Gson().fromJson(body, listProductType))
-                    }
-                } catch (e: Exception) {
-                    Log.d("Error loading products", e.toString())
-                }
-            }
-        })
+        }
     }
 
     /**
