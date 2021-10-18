@@ -1,30 +1,34 @@
 package com.gino.projectbedu.fragments
 
 import android.app.Activity
-import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.gino.projectbedu.DetailActivity
-import com.gino.projectbedu.Product
+import com.gino.projectbedu.activities.DetailActivity
+import com.gino.projectbedu.domain.Product
 import com.gino.projectbedu.R
 import com.gino.projectbedu.adapters.RecyclerAdapter
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import okhttp3.*
 import java.io.IOException
+import java.lang.Exception
 
 class ShopFragment : Fragment() {
     private lateinit var mAdapter : RecyclerAdapter
     private var listener : (Product) ->Unit = {}
     private lateinit var recyclerProducts: RecyclerView
     private lateinit var bottomNavigationView: BottomNavigationView
+    private val baseUrl = "https://fakestoreapi.com/products"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,7 +42,7 @@ class ShopFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        setUpRecyclerView()
+        getProductsFromRequest()
     }
 
     fun setListener(l: (Product) ->Unit){
@@ -65,19 +69,36 @@ class ShopFragment : Fragment() {
     /**
      * Seteamos nuestro recyclerView
      */
-    private fun setUpRecyclerView(){
+    private fun setUpRecyclerView(products: List<Product>){
         recyclerProducts.setHasFixedSize(true)
         recyclerProducts.layoutManager = LinearLayoutManager(activity)
-        mAdapter = RecyclerAdapter(requireActivity(), getProducts(requireContext()), listener)
+        mAdapter = RecyclerAdapter(requireActivity(), products, listener)
         recyclerProducts.adapter = mAdapter
     }
 
-    private fun getProducts(): MutableList<Product>{
-        var products:MutableList<Product> = ArrayList()
+    private fun getProductsFromRequest() {
+        val okHttpClient = OkHttpClient()
+        val listProductType = object : TypeToken<List<Product>>() {}.type
+        val request = Request.Builder()
+            .url(baseUrl)
+            .build()
+        okHttpClient.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                Toast.makeText(requireContext(),"No es posible cargar los productos.",Toast.LENGTH_LONG).show()
+                Log.d("Error", e.toString())
+            }
 
-        products.add(Product(1,"Control ps5",4.7f,"7000","Soy una descripción", "Soy una categoria","https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_.jpg"))
-
-        return products
+            override fun onResponse(call: Call, response: Response) {
+                try {
+                    val body = response.body?.string()
+                    activity?.runOnUiThread {
+                        setUpRecyclerView(Gson().fromJson(body, listProductType))
+                    }
+                } catch (e: Exception) {
+                    Log.d("Error loading products", e.toString())
+                }
+            }
+        })
     }
 
     /**
@@ -98,7 +119,7 @@ class ShopFragment : Fragment() {
     /**
      * Método que recibe el contexto y retorna la lista de Products
      */
-    fun getProducts(context: Context): MutableList<Product> {
+    fun getProductsFromFile(context: Context): List<Product> {
         val jsonString = getJsonDataFromAsset(context)
         val listProductType = object : TypeToken<List<Product>>() {}.type
         return Gson().fromJson(jsonString, listProductType)

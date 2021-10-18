@@ -1,7 +1,9 @@
-package com.gino.projectbedu
+package com.gino.projectbedu.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.gino.projectbedu.R
+import com.gino.projectbedu.domain.Product
 import com.gino.projectbedu.fragments.DetailFragment
 
 class DetailActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.gino.projectbedu
+package com.gino.projectbedu.domain
 
 import android.os.Parcel
 import android.os.Parcelable
@@ -10,7 +10,7 @@ import android.os.Parcelable
 class Product (
     val id: Int,
     val title: String,
-    val rating: Float,
+    val rating: Rating?,
     val price: String,
     val description: String,
     val category: String,
@@ -19,7 +19,7 @@ class Product (
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
         parcel.readString()!!,
-        parcel.readFloat()!!,
+        parcel.readParcelable(Rating::class.java.classLoader),
         parcel.readString()!!,
         parcel.readString()!!,
         parcel.readString()!!,
@@ -30,7 +30,7 @@ class Product (
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(id)
         parcel.writeString(title)
-        parcel.writeFloat(rating)
+        parcel.writeParcelable(rating,Parcelable.PARCELABLE_WRITE_RETURN_VALUE)
         parcel.writeString(price)
         parcel.writeString(description)
         parcel.writeString(category)

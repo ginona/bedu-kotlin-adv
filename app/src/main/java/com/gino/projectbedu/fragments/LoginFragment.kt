@@ -86,32 +86,6 @@ class LoginFragment : Fragment() {
         menu.clear()
     }
 
-    private fun asyncCall() {
-        val okHttpClient = OkHttpClient()
-
-        val request = Request.Builder()
-            .url(baseUrl)
-            .build()
-
-        okHttpClient.newCall(request).enqueue(object: Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                Log.d("Response", e.toString())
-                Log.d("Error", e.toString())
-            }
-
-            override fun onResponse(call: Call, response: Response) {
-                try {
-                    val json = JSONArray(response.body?.string())
-                    val data = Array<String?>(json.length()) { i -> json.getString(i) }
-                    Log.d("Data: ", data.toString())
-                } catch (e: JSONException) {
-                    e.printStackTrace()
-                }
-            }
-
-        })
-    }
-
     private fun userValidation(view: View) {
             val okHttpClient = OkHttpClient()
             var found = false
@@ -137,7 +111,6 @@ class LoginFragment : Fragment() {
                                         sharedPreferences?.edit()
                                             ?.putString("USER_NAME", jsonObject.getString("first_name"))
                                             ?.putString("USER_EMAIL", emailText.text.toString())
-                                            ?.putString("USER_PASSWORD", passwordText.text.toString())
                                             ?.putString("USER_IMAGE", jsonObject.getString("avatar"))
                                             ?.apply()
 

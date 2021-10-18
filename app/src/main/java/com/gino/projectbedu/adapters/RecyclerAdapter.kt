@@ -9,7 +9,7 @@ import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
-import com.gino.projectbedu.Product
+import com.gino.projectbedu.domain.Product
 import com.gino.projectbedu.R
 
 /**
@@ -17,7 +17,7 @@ import com.gino.projectbedu.R
  */
 class RecyclerAdapter(
     private val context:Context,
-    private val products: MutableList<Product>,
+    private val products: List<Product>,
     private val clickListener: (Product) -> Unit): RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -47,7 +47,7 @@ class RecyclerAdapter(
          */
         fun bind(product: Product, context: Context){
             productName.text = product.title
-            rating.rating = product.rating
+            rating.rating = product.rating?.rate ?: 5f
             price.text = product.price
             image.load(product.image)
         }
