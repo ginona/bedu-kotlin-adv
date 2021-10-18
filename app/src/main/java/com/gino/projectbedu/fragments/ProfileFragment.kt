@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import com.gino.projectbedu.R
 import com.gino.projectbedu.adapters.ElementsAdapter
+import com.gino.projectbedu.domain.Element
 import com.google.android.material.imageview.ShapeableImageView
 
 /**
@@ -61,6 +62,7 @@ class ProfileFragment : Fragment() {
             Element("Método de pago",R.drawable.card),
             Element("Pedidos",R.drawable.restore),
             Element("Notificaciones",R.drawable.notifications_active),
-            Element("Cambiar contraseña",R.drawable.lock))
+            Element("Cambiar contraseña",R.drawable.lock)
+        )
     }
 }

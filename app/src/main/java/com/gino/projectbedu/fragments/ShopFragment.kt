@@ -84,7 +84,6 @@ class ShopFragment : Fragment() {
             .build()
         okHttpClient.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
-                Toast.makeText(requireContext(),"No es posible cargar los productos.",Toast.LENGTH_LONG).show()
                 Log.d("Error", e.toString())
             }
 
@@ -95,6 +94,7 @@ class ShopFragment : Fragment() {
                         setUpRecyclerView(Gson().fromJson(body, listProductType))
                     }
                 } catch (e: Exception) {
+                    Toast.makeText(requireContext(),"No es posible cargar los productos.",Toast.LENGTH_LONG).show()
                     Log.d("Error loading products", e.toString())
                 }
             }
