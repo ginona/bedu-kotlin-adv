@@ -19,5 +19,4 @@ class ProfileElements : Fragment() {
     ): View? {
         return inflater.inflate(R.layout.fragment_profile_elements, container, false)
     }
-
 }

@@ -27,4 +27,7 @@
     <string name="test_mail">test@test.com</string>
     <string name="my_directions">Mis direcciones</string>
     <string name="logout">Cerrar sesión</string>
+    <string name="add_address">Agregar dirección</string>
+    <string name="my_location">Ubicación Actual</string>
+    <string name="update">Actualizar</string>
 </resources>

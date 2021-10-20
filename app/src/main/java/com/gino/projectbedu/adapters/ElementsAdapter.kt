@@ -14,7 +14,7 @@ import com.gino.projectbedu.domain.Element
  */
 class ElementsAdapter(
     private val elements: List<Element>,
-    private val click_listener: () -> Unit
+    private val click_listener: (String) -> Unit
     ): RecyclerView.Adapter<ElementsAdapter.ViewHolder>() {
 
 
@@ -29,7 +29,7 @@ class ElementsAdapter(
         holder.bind(currentElement)
 
         holder.itemView.setOnClickListener{
-            click_listener()
+            click_listener(currentElement.name)
         }
     }
 

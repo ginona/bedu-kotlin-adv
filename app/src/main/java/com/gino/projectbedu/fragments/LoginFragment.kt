@@ -129,7 +129,6 @@ class LoginFragment : Fragment() {
                                 .setAction(snackbarText) {}.show()
                         }
                     }
-
                 })
     }
 }
