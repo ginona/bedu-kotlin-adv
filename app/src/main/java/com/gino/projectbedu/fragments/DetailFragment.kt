@@ -26,7 +26,7 @@ class DetailFragment : Fragment() {
     private lateinit var tvDescription: TextView
     private lateinit var imgProduct: ImageView
     private lateinit var btnAddToCart: Button
-
+    private lateinit var productReceived: Product
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,7 +44,9 @@ class DetailFragment : Fragment() {
 
         btnAddToCart.setOnClickListener {
             requireActivity().getSharedPreferences("shopping_cart", Context.MODE_PRIVATE).edit().apply {
-                putString("cart_amount", "ten dollars")
+                putString("PROD_PRICE", productReceived.price)
+                putString("PROD_TITLE", productReceived.title)
+                putString("PROD_IMAGE", productReceived.image)
             }.apply()
         }
 
@@ -62,6 +64,7 @@ class DetailFragment : Fragment() {
         tvPrice.text = product.price
         tvDescription.text = product.description
         imgProduct.load(product.image)
+        productReceived = product
     }
 
 }

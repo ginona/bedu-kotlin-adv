@@ -30,4 +30,5 @@
     <string name="add_address">Agregar dirección</string>
     <string name="my_location">Ubicación Actual</string>
     <string name="update">Actualizar</string>
+    <string name="pay">Proceder al pago</string>
 </resources>
